@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.4/2 HUB - ระบบเงินค่าห้อง</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <div class="container">
+        <nav class="navbar">
+            <a href="../หน้าแรก/index.html" class="nav-link">🏠 หน้าแรกห้อง</a>
+            <a href="../ตารางเรียน/index.html" class="nav-link">📚 ตารางเรียน</a>
+            <a href="../ทำเวร/index.html" class="nav-link">🧹 ระบบส่งเวร</a>
+            <a href="finance.html" class="nav-link active">💰 เงินค่าห้อง</a>
+        </nav>
+
+        <header>
+            <div class="ai-badge">SMC-AI FINANCE CORE</div>
+            <h1>ระบบจัดการเงินค่าห้อง ม.4/2</h1>
+            <p>เกณฑ์การจัดเก็บสัปดาห์ละ 50 บาท (วันละ 10 บาท ตามวันมาเรียน จันทร์ - ศุกร์)</p>
+        </header>
+
+        <div class="finance-dashboard">
+            <div class="stat-card total-balance">
+                <h3>ยอดเงินคงเหลือในบัญชีปัจจุบัน</h3>
+                <div class="amount" id="net-balance">Loading... <span class="currency">THB</span></div>
+                <p class="updated">⚡ Live Sync จาก Google Sheets</p>
+            </div>
+            
+            <div class="stat-card total-income">
+                <h3>ชำระเข้าส่วนกลางแล้ว</h3>
+                <div class="amount-sub" id="total-income">Loading...</div>
+                <p class="updated">เป้าหมายรวม: 4,000.00</p>
+            </div>
+            
+            <div class="stat-card total-expense clickable" id="expense-card" title="คลิกเพื่อดูรายละเอียดรายจ่าย">
+                <h3>รายจ่ายรวมประจำเทอม 🔍</h3>
+                <div class="amount-sub" id="total-expense">Loading...</div>
+                <p class="updated" style="color: #eb5e55;">👉 คลิกดูรายละเอียดสิ่งของ</p>
+            </div>
+
+            <div class="stat-card total-unpaid clickable" id="unpaid-card" title="คลิกเพื่อดูรายชื่อคนค้างชำระ">
+                <h3>ยอดค้างชำระรวมทั้งห้อง 🔍</h3>
+                <div class="amount-sub" id="unpaid-balance">Loading...</div>
+                <p class="updated" style="color: #f5a623;">👉 คลิกดูรายชื่อเพื่อนที่ค้าง</p>
+            </div>
+        </div>
+
+        <div class="finance-grid" style="grid-template-columns: 1fr;">
+            <div class="finance-section log-box">
+                <h2>📜 หมายเหตุระบบบัญชี</h2>
+                <div class="transaction-log">
+                    <div class="log-item income">
+                        <div class="log-info">
+                            <span class="log-title">ระบบซิงค์ข้อมูลผ่าน Google Sheets อัตโนมัติ</span>
+                            <span class="log-date">เหรัญญิกสามารถกรอกข้อมูลเพิ่มรายชื่อหรืออัปเดตยอดเงินในชีตได้ทันที หน้าเว็บจะอัปเดตอัตโนมัติ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="expense-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>🧾 รายละเอียดการใช้จ่ายเงินห้อง</h2>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="expense-list-container" id="expense-list">
+                    <p>กำลังโหลดรายการ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="unpaid-modal">
+        <div class="modal" style="border-color: #f5a623; box-shadow: 0 0 30px rgba(245, 166, 35, 0.3);">
+            <div class="modal-header" style="border-bottom: 1px solid rgba(245, 166, 35, 0.2);">
+                <h2 style="color: #f5a623;">🚨 รายชื่อผู้ค้างชำระเงินห้อง</h2>
+                <button class="close-btn" id="close-unpaid-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="expense-list-container" id="unpaid-list">
+                    <p>กำลังโหลดรายชื่อ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js.js"></script>
+</body>
+</html>
